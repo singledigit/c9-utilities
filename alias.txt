@@ -1,0 +1,3 @@
+alias rm-stack="aws cloudformation delete-stack --stack-name"
+alias get-vars="/home/ec2-user/environment/utilities/get-vars.py"
+alias act="source /home/ec2-user/environment/utilities/beta/sam-beta/bin/activate"
