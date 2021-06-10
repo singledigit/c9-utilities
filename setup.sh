@@ -1,5 +1,5 @@
 # Increase hard drive too 100 GB
-./c9sizer.sh 100
+/home/ec2-user/environment/c9-utilities/c9sizer.sh 100
 
 # Update installed packages
 sudo yum update -y
@@ -38,7 +38,7 @@ SG_NAME="`wget -q -O - http://169.254.169.254/latest/meta-data/security-groups`"
 aws ec2 authorize-security-group-ingress --group-name $SG_NAME --protocol tcp --port 22 --cidr 0.0.0.0/0
 
 # Add auto mount
-VOL_UUID="`blkid /dev/nvme1n1 | sed -n 's/.*UUID=\"\([^\"]*\)\".*/\1/p'`"
+VOL_UUID="`sudo blkid /dev/nvme1n1 | sed -n 's/.*UUID=\"\([^\"]*\)\".*/\1/p'`"
 sudo cp /etc/fstab /etc/fstab.orig
 sudo su -c "echo 'UUID=$VOL_UUID  /home/ec2-user/environment/projects  xfs  defaults,nofail  0  2' >> /etc/fstab"
 sudo mount -a
