@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git aws colorize pip npm zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,4 +126,4 @@ unset npm # end hack
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # load venv
-source ~/penv/p3/bin/activate
+source ~/environment/penv/sam/bin/activate
