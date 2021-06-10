@@ -20,6 +20,13 @@ wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-lin
 unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
 sudo ./sam-installation/install --upgrade
 
+# Install latest SAM/CDK nightly
+mkdir cdk-beta && cd cdk-beta
+wget https://github.com/aws/aws-sam-cli/releases/download/sam-cli-beta-cdk/aws-sam-cli-linux-x86_64.zip
+unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+sudo ./sam-installation/install
+cd ~/
+
 # Create new key
 ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
 
