@@ -30,6 +30,22 @@ cd ~/
 # Create new key
 ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
 
+# attach projects volume
+mkdir ~/environment/projects
+EC2_INSTANCE_ID="`wget -q -O - http://169.254.169.254/latest/meta-data/instance-id`"
+aws ec2 attach-volume --device /dev/sdf --instance-id $EC2_INSTANCE_ID --volume-id vol-05a2e99a36911f69d
+SG_NAME="`wget -q -O - http://169.254.169.254/latest/meta-data/security-groups`"
+aws ec2 authorize-security-group-ingress --group-name $SG_NAME --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+# Add auto mount
+VOL_UUID="`blkid /dev/nvme1n1 | sed -n 's/.*UUID=\"\([^\"]*\)\".*/\1/p'`"
+sudo cp /etc/fstab /etc/fstab.orig
+sudo su -c "echo 'UUID=$VOL_UUID  /home/ec2-user/environment/projects  xfs  defaults,nofail  0  2' >> /etc/fstab"
+sudo mount -a
+
+# Attach elastic IP
+aws ec2 associate-address --allocation-id eipalloc-0a0f891b99cd8f2fd --instance-id $EC2_INSTANCE_ID
+
 # install required packages
 sudo yum install -y util-linux-user zsh jq
 
