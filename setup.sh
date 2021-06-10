@@ -44,7 +44,7 @@ sudo su -c "echo 'UUID=$VOL_UUID  /home/ec2-user/environment/projects  xfs  defa
 sudo mount -a
 
 # Attach elastic IP
-aws ec2 associate-address --allocation-id eipalloc-0a0f891b99cd8f2fd --instance-id $EC2_INSTANCE_ID
+# aws ec2 associate-address --allocation-id eipalloc-0a0f891b99cd8f2fd --instance-id $EC2_INSTANCE_ID
 
 # install required packages
 sudo yum install -y util-linux-user zsh jq
