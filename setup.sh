@@ -20,6 +20,9 @@ wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-lin
 unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
 sudo ./sam-installation/install --upgrade
 
+# Create new key
+ssh-keygen -f id_rsa -t rsa -N ''
+
 # install required packages
 sudo yum install -y util-linux-user zsh jq
 
@@ -33,3 +36,6 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 mv ~/.bashrc ~/.bashrc.bak
 mv ~/.zshrc ~/.zshrc.bak
 cp ~/c9-utilities/.bashrc ~/c9-utilities/.zshrc ~/
+
+# Output public key
+cat ~/.ssh/id_rsa.pub
