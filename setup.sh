@@ -20,8 +20,9 @@ wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-lin
 unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
 sudo ./sam-installation/install --upgrade
 
-# Install latest SAM/CDK nightly
-mkdir cdk-beta && cd cdk-beta
+# Install sam-beta-cdk
+mkdir sam-beta-cdk
+cd sam-beta-cdk
 wget https://github.com/aws/aws-sam-cli/releases/download/sam-cli-beta-cdk/aws-sam-cli-linux-x86_64.zip
 unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
 sudo ./sam-installation/install
