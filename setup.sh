@@ -21,7 +21,7 @@ unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
 sudo ./sam-installation/install --upgrade
 
 # Create new key
-ssh-keygen -f id_rsa -t rsa -N ''
+ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
 
 # install required packages
 sudo yum install -y util-linux-user zsh jq
@@ -31,11 +31,3 @@ sudo passwd ec2-user
 
 # Install ZSH
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Update rc files
-mv ~/.bashrc ~/.bashrc.bak
-mv ~/.zshrc ~/.zshrc.bak
-cp ~/c9-utilities/.bashrc ~/c9-utilities/.zshrc ~/
-
-# Output public key
-cat ~/.ssh/id_rsa.pub
