@@ -1,2 +1,0 @@
-alias rm-stack="aws cloudformation delete-stack --stack-name"
-alias get-vars="/home/ec2-user/c9-utilities/get-vars.py"
